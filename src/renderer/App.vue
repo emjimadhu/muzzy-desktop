@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import toolbar from '@/components/general/toolbar'
+  import toolbar from '@/components/toolbar'
 
   export default {
     name: 'muzzy-desktop',
@@ -28,10 +28,10 @@
 </script>
 
 <style>
-  /* CSS */
-  html {
-    overflow: scroll;
-    overflow-x: hidden;
+/* CSS */
+html {
+  overflow: scroll;
+  overflow-x: hidden;
 }
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */

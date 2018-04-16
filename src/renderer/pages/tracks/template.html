@@ -1,0 +1,66 @@
+<v-slide-x-transition mode="out-in">
+  <div class="pb-5">
+    <v-card>
+      <v-card-title>
+        Tracks
+        <v-spacer></v-spacer>
+        <v-btn color="primary" @click="$refs.dirInput.click()">Pick Directory</v-btn>
+        <input
+          type="file"
+          style="display: none"
+          ref="dirInput"
+          @change="onDirPicked"
+          webkitdirectory
+        >
+      </v-card-title>
+      <v-card-text>
+        <v-data-table
+          :headers="headers"
+          :items="songs"
+          hide-actions
+          :loading="listLoading"
+          class="elevation-1"
+          dark
+        >
+          <!-- <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear> -->
+          <v-list two-line subheader dense slot="progress">
+            <v-list-tile avatar>
+              <v-list-tile-avatar>
+                <v-progress-circular indeterminate color="primary"></v-progress-circular>
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title>
+                  <p>Loading Songs.</p>
+                </v-list-tile-title>
+                <v-list-tile-sub-title>
+                  <p>It may take few minutes at first. Please Hold On.</p>
+                </v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+          <template slot="items" slot-scope="props">
+            <tr
+              :class="{ 'primary': (playingIndex === props.item.index) }"
+              @click="playSong(props.item, props.item.index)"
+            >
+              <td>{{ props.item.title }}</td>
+            <td>{{ props.item.artist }}</td>
+            <td>{{ props.item.album }}</td>
+            </tr>
+          </template>
+          <template slot="footer">
+            <td colspan="100%">
+              <strong>{{ songs.length }} Songs.</strong>
+            </td>
+          </template>
+        </v-data-table>
+      </v-card-text>
+    </v-card>
+
+    <player
+      :canPlay="canPlay"
+      :ended="ended"
+      v-show="songLoaded"
+    />
+  </div>
+</v-slide-x-transition>

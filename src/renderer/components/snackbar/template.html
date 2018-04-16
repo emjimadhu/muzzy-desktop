@@ -1,0 +1,11 @@
+<v-snackbar
+  :timeout="snackbarTimeout"
+  :color="snackbarColor"
+  multi-line
+  v-model="snackbarState"
+>
+  {{ snackbarMSG }}
+  <v-btn dark flat @click="snackbarClose">
+    <v-icon>close</v-icon>
+  </v-btn>
+</v-snackbar>
