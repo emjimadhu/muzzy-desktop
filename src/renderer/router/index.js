@@ -21,6 +21,11 @@ export default new Router({
       component: require('@/pages/artists').default
     },
     {
+      path: '/background',
+      name: 'background',
+      component: require('@/pages/background').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

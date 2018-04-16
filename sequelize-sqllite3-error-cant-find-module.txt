@@ -1,0 +1,7 @@
+// change the folder name of 'electron-v1.8-linux-x64' in sqllite3/lib/binding to the following if faced any errors when building
+
+node-v57-linux-x64
+
+
+
+https://stackoverflow.com/questions/32423097/electron-and-sequelize-error-the-dialect-sqlite-is-not-supported

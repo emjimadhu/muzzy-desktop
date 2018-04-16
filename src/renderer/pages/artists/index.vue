@@ -14,6 +14,14 @@
 
 <script type="text/javascript">
 export default {
-  name: 'artists'
+  name: 'artists',
+  created () {
+    this.$electron.ipcRenderer.send('background-start', new Date())
+
+    this.$electron.ipcRenderer.on('background-response', (event, payload) => {
+      console.log('from background process')
+      console.log(payload)
+    })
+  }
 }
 </script>

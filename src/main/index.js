@@ -11,18 +11,27 @@ if (process.env.NODE_ENV !== 'development') {
 }
 
 let mainWindow
+// let backgroundWindow
 const winURL = process.env.NODE_ENV === 'development'
   ? `http://localhost:9080`
   : `file://${__dirname}/index.html`
 
-function createWindow () {
+// const backgroundURL = process.env.NODE_ENV === 'development'
+//   ? `http://localhost:9080/#/background`
+//   : `file://${__dirname}/background.html`
+
+function createMainWindow () {
   /**
    * Initial window options
    */
   mainWindow = new BrowserWindow({
     height: 563,
     useContentSize: true,
-    width: 1000
+    width: 1000,
+    frame: false,
+    webPreferences: {
+      nodeIntegrationInWorker: true
+    }
   })
 
   mainWindow.loadURL(winURL)
@@ -32,7 +41,26 @@ function createWindow () {
   })
 }
 
-app.on('ready', createWindow)
+// function createBackgroundWindow () {
+//   backgroundWindow = new BrowserWindow({
+//     show: true
+//   })
+//
+//   backgroundWindow.loadURL(backgroundURL)
+//
+//   // setTimeout(() => {
+//   //   backgroundWindow.loadURL(`file://${__dirname}/background.html`)
+//   // }, 2000)
+//
+//   backgroundWindow.on('closed', () => {
+//     backgroundWindow = null
+//   })
+// }
+
+app.on('ready', () => {
+  createMainWindow()
+  // createBackgroundWindow()
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -42,9 +70,13 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow()
+    createMainWindow()
   }
 })
+
+// ipcMain.on('background-response', (event, payload) => mainWindow.webContents.send('background-response', payload))
+//
+// ipcMain.on('background-start', (event, payload) => backgroundWindow.webContents.send('background-start', payload))
 
 /**
  * Auto Updater

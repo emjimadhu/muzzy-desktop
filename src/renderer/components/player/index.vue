@@ -1,7 +1,8 @@
 <template>
   <div>
     <v-footer
-      absolute
+      fixed
+      app
       height="70px"
     >
       <v-layout row>
@@ -172,6 +173,7 @@ export default {
         if (this.autoPlay) this.audio.play()
         this.loaded = true
         this.totalDuration = parseInt(this.audio.duration)
+        this.playing = true
       } else {
         throw new Error('Failed to load sound file')
       }
