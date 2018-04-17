@@ -1,5 +1,4 @@
 import NodeID3 from 'node-id3'
-// import notifier from 'node-notifier'
 
 import { readDir } from '@/helpers/fileActions'
 import Worker from '../myworker.worker.js'
@@ -119,25 +118,11 @@ export default {
         this.playingIndex = index
         this.songLoaded = false
         this.songs[index]['dataURI'] = dataURI
-        let myNotification = new Notification(info.title, {
+        new Notification(info.title, {
           body: `${info.artist} - ${info.album}`,
           icon: info.cover,
           image: info.cover
         })
-        console.log(myNotification)
-        // notifier.notify(
-        //   {
-        //     title: info.title,
-        //     message: `${info.artist} - ${info.album}`,
-        //     icon: info.cover
-        //   },
-        //   function (err, response) {
-        //     console.log('response')
-        //     console.log(response)
-        //     console.log('error')
-        //     console.log(err)
-        //   }
-        // )
       }
     }
   },
