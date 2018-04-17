@@ -13,13 +13,15 @@ export default {
   ended () {
     let index = null
     if (this.playingIndex === (this.totalSelectedSongs - 1)) {
-      console.log('Index and Total Songs are Equal')
       index = 0
     } else {
-      console.log('Index and Total Songs are not Equal')
       index = this.playingIndex
     }
-    index++
+    if (this.$store.getters.shuffle) {
+      index = Math.floor(Math.random() * (this.totalSelectedSongs - 1)) + 0
+    } else {
+      index++
+    }
     this.playSong(this.songs[index], index)
     this.$store.commit('CHANGE_CURRENT_SONG_ENDED', false)
   },
@@ -89,6 +91,12 @@ export default {
     }
   },
   playSong (info, index) {
+    console.log('All Songs')
+    console.log(this.songs)
+    console.log('Current Index')
+    console.log(index)
+    console.log('Current Song')
+    console.log(info)
     let dataURI = null
     if (this.songs[index]['dataURI']) {
       console.log('Data URI is present')

@@ -39,10 +39,21 @@
                 />
               </v-list-tile-sub-title>
             </v-list-tile-content>
+            <v-list-tile-action @click="shuffle" :disabled="loaded === false">
+              <v-tooltip top>
+                <v-btn icon :class="shuffleColor" slot="activator">
+                  <v-icon>shuffle</v-icon>
+                </v-btn>
+                <span>Shuffle {{ ($store.getters.shuffle) ? 'Off' : 'On' }}</span>
+              </v-tooltip>
+            </v-list-tile-action>
             <v-list-tile-action @click="loop" :disabled="loaded === false">
-              <v-btn icon :class="loopColor" >
-                <v-icon>loop</v-icon>
-              </v-btn>
+              <v-tooltip top>
+                <v-btn icon :class="loopColor"slot="activator" >
+                  <v-icon>loop</v-icon>
+                </v-btn>
+                <span>Loop this Song</span>
+              </v-tooltip>
             </v-list-tile-action>
             <v-list-tile-action @click="mute()" :disabled="loaded === false">
               <v-btn icon :class="muteColor" >

@@ -10,5 +10,6 @@ export default () => ({
   audio: undefined,
   totalDuration: 0,
   loopColor: 'white--text',
-  onLoop: false
+  onLoop: false,
+  shuffleColor: 'white--text'
 })

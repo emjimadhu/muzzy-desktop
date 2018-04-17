@@ -41,6 +41,10 @@ export default {
     this.audio.loop = this.onLoop
     this.loopColor = this.onLoop ? 'primary white--text' : 'white--text'
   },
+  shuffle () {
+    this.$store.commit('CHANGE_SHUFFLE_STATUS', !this.$store.getters.shuffle)
+    this.shuffleColor = this.$store.getters.shuffle ? 'primary white--text' : 'white--text'
+  },
   reload () {
     this.audio.load()
   },
@@ -50,7 +54,6 @@ export default {
     }
   },
   ended () {
-    console.log('current song ended')
     this.$store.commit('CHANGE_CURRENT_SONG_ENDED', true)
   },
   _handleLoaded () {

@@ -11,7 +11,9 @@
       </v-container>
     </v-content>
 
-    <player />
+    <player
+      v-show="$store.getters.currentSongFile"
+    />
   </v-app>
 </template>
 
