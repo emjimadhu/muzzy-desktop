@@ -3,5 +3,8 @@ export default {
   currentSongArt: (state) => state.currentSongArt,
   currentSongName: (state) => state.currentSongName,
   currentSongArtist: (state) => state.currentSongArtist,
-  autoPlay: (state) => state.autoPlay
+  autoPlay: (state) => state.autoPlay,
+  canPlay: (state) => state.canPlay,
+  currentSongEnded: (state) => state.currentSongEnded,
+  shuffle: (state) => state.shuffle
 }

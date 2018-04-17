@@ -3,5 +3,8 @@ export default {
   currentSongArt: 'static/z_no_album_art.jpg',
   currentSongName: 'Unknown Track',
   currentSongArtist: 'Unknown Artist',
-  autoPlay: false
+  autoPlay: false,
+  canPlay: false,
+  currentSongEnded: false,
+  shuffle: false
 }

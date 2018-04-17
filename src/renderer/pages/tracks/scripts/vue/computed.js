@@ -1,5 +1,8 @@
+import { mapGetters } from 'vuex'
+
 export default {
-  noFiles () {
-    return (!this.songs.length > 0)
-  }
+  ...mapGetters({
+    searchTerm: 'searchTerm',
+    currentSongEnded: 'currentSongEnded'
+  })
 }

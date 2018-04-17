@@ -10,16 +10,20 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+
+    <player />
   </v-app>
 </template>
 
 <script>
   import toolbar from '@/components/toolbar'
+  import player from '@/components/player'
 
   export default {
     name: 'muzzy-desktop',
     components: {
-      'app-bar': toolbar
+      'app-bar': toolbar,
+      player
     },
     data: () => ({
       darkApp: true

@@ -19,5 +19,7 @@ export default () => ({
   ],
   listLoading: false,
   playingIndex: null,
-  songLoaded: false
+  songLoaded: false,
+  totalSelectedSongs: 0,
+  processedSongs: 0
 })

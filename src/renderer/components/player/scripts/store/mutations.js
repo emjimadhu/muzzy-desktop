@@ -13,5 +13,14 @@ export default {
   },
   CHANGE_AUTOPLAY_STATE: (state, payload) => {
     state.autoPlay = payload
+  },
+  CHANGE_CANPLAY_STATUS: (state, payload) => {
+    state.canPlay = payload
+  },
+  CHANGE_CURRENT_SONG_ENDED: (state, payload) => {
+    state.currentSongEnded = payload
+  },
+  CHANGE_SHUFFLE_STATUS: (state, payload) => {
+    state.shuffle = payload
   }
 }

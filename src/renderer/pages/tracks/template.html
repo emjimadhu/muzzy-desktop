@@ -4,6 +4,7 @@
       <v-card-title>
         Tracks
         <v-spacer></v-spacer>
+        <v-btn flat @click="loadDetails">load details</v-btn>
         <v-btn color="primary" @click="$refs.dirInput.click()">Pick Directory</v-btn>
         <input
           type="file"
@@ -17,6 +18,7 @@
         <v-data-table
           :headers="headers"
           :items="songs"
+          :search="searchTerm"
           hide-actions
           :loading="listLoading"
           class="elevation-1"
@@ -30,10 +32,10 @@
               </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title>
-                  <p>Loading Songs.</p>
+                  <p>Processing {{ totalSelectedSongs }} songs.</p>
                 </v-list-tile-title>
                 <v-list-tile-sub-title>
-                  <p>It may take few minutes at first. Please Hold On.</p>
+                  <p>It may take a while. Processed {{ processedSongs }} / {{ totalSelectedSongs }} songs.</p>
                 </v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
@@ -46,6 +48,7 @@
               <td>{{ props.item.title }}</td>
             <td>{{ props.item.artist }}</td>
             <td>{{ props.item.album }}</td>
+            <td>{{ props.item.genre }}</td>
             </tr>
           </template>
           <template slot="footer">
@@ -53,14 +56,13 @@
               <strong>{{ songs.length }} Songs.</strong>
             </td>
           </template>
+          <template slot="no-data" v-if="!listLoading">
+            <v-alert :value="true" color="grey" icon="music_note">
+              Sorry, There are no songs.
+            </v-alert>
+          </template>
         </v-data-table>
       </v-card-text>
     </v-card>
-
-    <player
-      :canPlay="canPlay"
-      :ended="ended"
-      v-show="songLoaded"
-    />
   </div>
 </v-slide-x-transition>

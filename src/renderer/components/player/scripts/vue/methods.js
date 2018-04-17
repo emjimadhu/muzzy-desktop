@@ -44,6 +44,15 @@ export default {
   reload () {
     this.audio.load()
   },
+  canPlay (v) {
+    if (v) {
+      this.$store.commit('CHANGE_CANPLAY_STATUS', true)
+    }
+  },
+  ended () {
+    console.log('current song ended')
+    this.$store.commit('CHANGE_CURRENT_SONG_ENDED', true)
+  },
   _handleLoaded () {
     if (this.audio.readyState >= 2) {
       if (this.autoPlay) this.audio.play()
