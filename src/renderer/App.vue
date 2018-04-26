@@ -13,6 +13,9 @@
     <player
       v-show="$store.getters.currentSongFile"
     />
+    <!-- <player
+      v-show="true"
+    /> -->
 
     <transition name="fade">
       <splash

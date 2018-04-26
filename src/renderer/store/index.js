@@ -8,10 +8,14 @@ import toolbar from '@/components/toolbar/scripts/store'
 import snackbar from '@/components/snackbar/scripts/store'
 import player from '@/components/player/scripts/store'
 
+// General Store Imports
+import playlist from './modules/playlist'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
+    playlist,
     toolbar,
     snackbar,
     player

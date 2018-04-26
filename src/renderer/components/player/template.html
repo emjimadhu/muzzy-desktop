@@ -2,9 +2,9 @@
   <v-footer
     fixed
     app
-    height="70px"
+    height="70"
   >
-    <v-layout row>
+    <v-layout row wrap>
       <v-flex xs12>
         <v-list two-line subheader>
           <v-list-tile avatar>
@@ -73,6 +73,31 @@
         </v-list>
         <audio id="player" ref="player" v-on:ended="ended" v-on:canplay="canPlay" :src="currentSongFile"></audio>
       </v-flex>
+      <!-- <v-flex xs12>
+        <v-card style="height:700px;width:100%;">
+          <canvas id="canvas" ref="canvas"></canvas>
+          <v-layout row>
+            <v-flex xs12 sm6 md6 class="v-center">
+              <div>
+                <v-subheader>Now Playing</v-subheader>
+                <v-avatar
+                  tile
+                  :size="256"
+                  class="grey lighten-4"
+                >
+                  <img :src="currentSongArt" alt="avatar">
+                </v-avatar>
+              </div>
+            </v-flex>
+            <v-flex xs12 sm6 md6 class="pl-3">
+              <div>
+                <p>Title: <strong>{{ currentSongName }}</strong> </p>
+                <p>Artist: <strong>{{ currentSongArtist }}</strong> </p>
+              </div>
+            </v-flex>
+          </v-layout>
+        </v-card>
+      </v-flex> -->
     </v-layout>
   </v-footer>
 </div>

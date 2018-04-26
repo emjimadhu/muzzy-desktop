@@ -20,6 +20,7 @@ export default {
     this.$nextTick(() => this.$refs.search.focus())
   },
   closeSearch () {
+    this.$store.commit('CHANGE_SEARCH_TEXT', '')
     this.isSearch = false
   }
 }

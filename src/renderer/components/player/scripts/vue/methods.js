@@ -1,7 +1,4 @@
-const formatTime = (secend) => {
-  let time = new Date(secend * 1000).toISOString().substr(14, 5)
-  return time
-}
+import Helpers from '@/utils/helpers'
 
 export default {
   setPosition () {
@@ -68,7 +65,7 @@ export default {
   },
   _handlePlayingUI (e) {
     this.percentage = this.audio.currentTime / this.audio.duration * 100
-    this.currentTime = formatTime(this.audio.currentTime)
+    this.currentTime = Helpers.formatTime(this.audio.currentTime)
   },
   _handlePlayPause (e) {
     if (e.type === 'pause' && this.paused === false && this.playing === false) {
@@ -77,6 +74,96 @@ export default {
   },
   _handleEnded () {
     this.paused = this.playing = false
+  },
+  _handleVisualizer () {
+    console.log('Audio File ')
+    console.log(this.audio.src)
+    let context = new AudioContext()
+    const src = context.createMediaElementSource(this.audio)
+    console.log('Audio File')
+    console.log(this.audio)
+    console.log('SRC')
+    console.log(src)
+    let analyser = context.createAnalyser()
+    console.log('Ananlyser')
+    console.log(analyser)
+
+    let canvas = document.getElementById('canvas')
+    console.log('Canvas')
+    console.log(canvas)
+    canvas.width = 700
+    canvas.height = 400
+    let ctx = canvas.getContext('2d')
+    console.log('CTX')
+    console.log(ctx)
+
+    src.connect(analyser)
+    console.log('Context Destination')
+    console.log(context.destination)
+    analyser.connect(context.destination)
+
+    analyser.fftSize = 256
+
+    const bufferLength = analyser.frequencyBinCount
+    console.log(bufferLength)
+
+    let dataArray = new Uint8Array(bufferLength)
+
+    const WIDTH = canvas.width
+    const HEIGHT = canvas.height
+
+    const barWidth = (WIDTH / bufferLength) * 2.5
+    let barHeight = null
+    let x = 0
+
+    renderFrame()
+
+    function renderFrame () {
+      console.log('Render Frame is working')
+      requestAnimationFrame(this.renderFrame())
+
+      x = 0
+
+      analyser.getByteFrequencyData(dataArray)
+
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, WIDTH, HEIGHT)
+
+      for (var i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i]
+        let r = barHeight + (25 * (i / bufferLength))
+        let g = 250 * (i / bufferLength)
+        let b = 50
+
+        ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight)
+
+        x += barWidth + 1
+      }
+    }
+  },
+  renderFrame (x, analyser, dataArray, ctx, WIDTH, HEIGHT, bufferLength, barHeight, barWidth) {
+    console.log('Render Frame is working')
+    requestAnimationFrame(this.renderFrame())
+
+    x = 0
+
+    analyser.getByteFrequencyData(dataArray)
+
+    ctx.fillStyle = '#000'
+    ctx.fillRect(0, 0, WIDTH, HEIGHT)
+
+    for (var i = 0; i < bufferLength; i++) {
+      barHeight = dataArray[i]
+      let r = barHeight + (25 * (i / bufferLength))
+      let g = 250 * (i / bufferLength)
+      let b = 50
+
+      ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
+      ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight)
+
+      x += barWidth + 1
+    }
   },
   init () {
     this.audio.addEventListener('timeupdate', this._handlePlayingUI)

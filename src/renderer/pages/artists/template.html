@@ -1,0 +1,25 @@
+<v-slide-x-transition mode="out-in">
+  <div>
+    <v-layout row wrap>
+      <v-flex xs12 sm6 md3 v-for="(artist, index) in artists" :key="index" class="pa-2">
+        <v-card hover @click.native="singleArtistDialog(artist)">
+          <v-card-media :src="artist.image[2].text" height="200px">
+          </v-card-media>
+          <v-card-title primary-title>
+            <div>
+              <h3 class="headline mb-0">{{ artist.name }}</h3>
+              <p>{{ artist.bio.summary | truncate(60) }}</p>
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-toolbar dense flat>
+              <p><v-icon small>play_arrow</v-icon> {{ artist.stats.playcount }}</p>
+              <v-spacer></v-spacer>
+              <p><v-icon small>audiotrack</v-icon> {{ artist.stats.listeners }}</p>
+            </v-toolbar>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </div>
+</v-slide-x-transition>

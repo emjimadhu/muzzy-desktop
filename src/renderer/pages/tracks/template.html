@@ -17,12 +17,13 @@
       <v-card-text>
         <v-data-table
           :headers="headers"
-          :items="songs"
+          :items="currentPlaylist"
           :search="searchTerm"
           hide-actions
           :loading="listLoading"
           class="elevation-1"
-          dark
+          :pagination.sync="pagination"
+          :dark="darkApp"
         >
           <!-- <v-progress-linear slot="progress" color="blue" indeterminate></v-progress-linear> -->
           <v-list two-line subheader dense slot="progress">
@@ -45,15 +46,17 @@
               :class="{ 'primary': (playingIndex === props.item.index) }"
               @click="playSong(props.item, props.item.index)"
             >
-              <td>{{ props.item.title }}</td>
-            <td>{{ props.item.artist }}</td>
-            <td>{{ props.item.album }}</td>
-            <td>{{ props.item.genre }}</td>
+              <td class="text-xs-center">{{ props.item.id }}</td>
+              <td>{{ props.item.title | truncate(30) }}</td>
+              <td>{{ props.item.artist | truncate(30) }}</td>
+              <td>{{ props.item.album | truncate(30) }}</td>
+              <td>{{ props.item.genre }}</td>
+              <td class="text-xs-center">{{ props.item.duration }}</td>
             </tr>
           </template>
           <template slot="footer">
             <td colspan="100%">
-              <strong>{{ songs.length }} Songs.</strong>
+              <strong>{{ songs.length }} Songs. Total Durations {{ totalSongsDurations }}</strong>
             </td>
           </template>
           <template slot="no-data" v-if="!listLoading">

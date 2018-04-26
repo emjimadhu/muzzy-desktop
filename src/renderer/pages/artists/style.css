@@ -1,0 +1,13 @@
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  background: red;
+  top: 0;
+  width: 100%;
+  top: 60px;
+}
+
+.normal-topbar {
+  background: transparent;
+  top: -71px;
+}
