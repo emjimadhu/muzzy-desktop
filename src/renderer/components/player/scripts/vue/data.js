@@ -11,5 +11,6 @@ export default () => ({
   totalDuration: 0,
   loopColor: 'white--text',
   onLoop: false,
-  shuffleColor: 'white--text'
+  shuffleColor: 'white--text',
+  showNowPlaying: false
 })

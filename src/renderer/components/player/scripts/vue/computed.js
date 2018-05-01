@@ -11,6 +11,7 @@ export default {
     currentSongArt: 'currentSongArt',
     currentSongName: 'currentSongName',
     currentSongArtist: 'currentSongArtist',
+    currentSongInfo: 'currentSongInfo',
     autoPlay: 'autoPlay'
   }),
   duration () {

@@ -22,5 +22,8 @@ export default {
   },
   CHANGE_SHUFFLE_STATUS: (state, payload) => {
     state.shuffle = payload
+  },
+  CHANGE_CURRENT_SONG_INFO: (state, payload) => {
+    state.currentSongInfo = payload
   }
 }

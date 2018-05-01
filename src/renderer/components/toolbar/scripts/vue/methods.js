@@ -1,3 +1,5 @@
+import { EventBus } from '@/utils/eventBus'
+
 export default {
   minimize () {
     const window = this.$electron.remote.BrowserWindow.getFocusedWindow()
@@ -22,5 +24,8 @@ export default {
   closeSearch () {
     this.$store.commit('CHANGE_SEARCH_TEXT', '')
     this.isSearch = false
+  },
+  openAboutDialog () {
+    EventBus.$emit('ABOUT_DIALOG_TRIGGERED')
   }
 }

@@ -142,7 +142,10 @@ export default {
       file: info.dataURI,
       name: info.title,
       artist: info.artist,
-      art: info.cover
+      album: info.album,
+      art: info.cover,
+      genre: info.genre,
+      duration: info.duration
     })
     this.playingIndex = index
     this.songLoaded = false

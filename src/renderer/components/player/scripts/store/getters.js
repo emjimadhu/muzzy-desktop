@@ -6,5 +6,6 @@ export default {
   autoPlay: (state) => state.autoPlay,
   canPlay: (state) => state.canPlay,
   currentSongEnded: (state) => state.currentSongEnded,
-  shuffle: (state) => state.shuffle
+  shuffle: (state) => state.shuffle,
+  currentSongInfo: (state) => state.currentSongInfo
 }

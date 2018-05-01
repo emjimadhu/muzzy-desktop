@@ -1,0 +1,47 @@
+<v-dialog v-model="dialog" max-width="350">
+  <v-toolbar :height="35" color="black" dark flat>
+    <v-subheader>About App</v-subheader>
+    <v-spacer></v-spacer>
+    <v-btn flat icon small @click.native="dialog = false">
+      <v-icon>close</v-icon>
+    </v-btn>
+  </v-toolbar>
+  <v-card>
+    <v-container fluid fill-height class="black">
+      <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md4>
+          <v-icon class="primary--text" style="font-size:100px;">music_video</v-icon>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <v-card-text>
+      <v-list two-line subheader dense>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title>App Name</v-list-tile-sub-title>
+            <v-list-tile-title>{{ appName }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title>App Version</v-list-tile-sub-title>
+            <v-list-tile-title>{{ appVersion }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title>OS</v-list-tile-sub-title>
+            <v-list-tile-title>{{ appOS }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-sub-title>App Path</v-list-tile-sub-title>
+            <v-list-tile-title>{{ appPath }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider inset></v-divider>
+      </v-list>
+    </v-card-text>
+  </v-card>
+</v-dialog>

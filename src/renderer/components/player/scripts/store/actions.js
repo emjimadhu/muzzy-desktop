@@ -5,5 +5,6 @@ export default {
     commit('CHANGE_CURRENT_SONG_ARTIST', payload.artist)
     commit('CHANGE_CURRENT_SONG_ART', payload.art)
     commit('CHANGE_AUTOPLAY_STATE', true)
+    commit('CHANGE_CURRENT_SONG_INFO', payload)
   }
 }

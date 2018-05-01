@@ -13,15 +13,14 @@
     <player
       v-show="$store.getters.currentSongFile"
     />
-    <!-- <player
-      v-show="true"
-    /> -->
 
     <transition name="fade">
       <splash
         v-if="!appLoaded"
       />
     </transition>
+
+    <about-dialog />
   </v-app>
 </template>
 
@@ -31,13 +30,15 @@
   import toolbar from '@/components/toolbar'
   import player from '@/components/player'
   import splash from '@/components/splash'
+  import aboutDialog from '@/components/dialogs/about'
 
   export default {
     name: 'muzzy-desktop',
     components: {
       'app-bar': toolbar,
       player,
-      splash
+      splash,
+      'about-dialog': aboutDialog
     },
     computed: {
       ...mapGetters({

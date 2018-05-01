@@ -6,5 +6,6 @@ export default {
   autoPlay: false,
   canPlay: false,
   currentSongEnded: false,
-  shuffle: false
+  shuffle: false,
+  currentSongInfo: {}
 }
